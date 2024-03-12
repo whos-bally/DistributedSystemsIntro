@@ -7,6 +7,8 @@ import java.net.UnknownHostException;
 
 public class Client {
 
+    private final int READ_LINES = 3;
+
     public Client(){
         try{
             System.out.println("Hello");
@@ -15,7 +17,10 @@ public class Client {
             BufferedReader buffReader = new BufferedReader(new InputStreamReader(in));
 
             // print buffered reader contents
-            System.out.println(buffReader.readLine());
+           for (int i = 0; i < READ_LINES; i++){
+               System.out.println(buffReader.readLine());
+           }
+
 
             // close socket
             s.close();

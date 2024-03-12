@@ -5,9 +5,8 @@ import java.net.Socket;
 public class Server {
 
     private ServerSocket serverSocket;
-    private Socket client;
+    private Socket socket;
     private Connection conn;
-    private Thread connThread;
 
     public Server(){
 
@@ -25,12 +24,11 @@ public class Server {
 
         try {
             while(true){
-                client = serverSocket.accept();
-                System.out.println("Connection accepted");
+                // Accept client socket
+                socket = serverSocket.accept();
                 // Create a thread for client service
-                conn = new Connection(client);
-                connThread = new Thread(conn);
-                connThread.start();
+                conn = new Connection(socket);
+                conn.start();
             }
         }
         catch (IOException e){
