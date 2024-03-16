@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -14,11 +11,13 @@ public class Client {
             System.out.println("Hello");
             Socket s = new Socket("127.0.0.1", 5155);
             InputStream in = s.getInputStream();
-            BufferedReader buffReader = new BufferedReader(new InputStreamReader(in));
-
+            DataInputStream inputStream = new DataInputStream(in);
+            double localDouble = 0;
             // print buffered reader contents
            for (int i = 0; i < READ_LINES; i++){
-               System.out.println(buffReader.readLine());
+
+               localDouble += inputStream.readDouble();
+               System.out.println(localDouble);
            }
 
 

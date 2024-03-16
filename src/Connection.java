@@ -16,12 +16,12 @@ public class Connection extends Thread {
     public void run() {
 
         try {
-            // create a new printwriter with autoflushing
-            PrintWriter pout = new PrintWriter(outputLine.getOutputStream(), true);
+            // create a new data output stream
+            DataOutputStream poutdata = new DataOutputStream(outputLine.getOutputStream());
 
             // send a message to the client
             for (int i = 0; i < WRITE_LINE; i++){
-                pout.println("Thread Name: " + getName() + " The Date and Time is: " + new Date().toString());
+                poutdata.writeDouble(1.5);
                 Thread.sleep(1000);
             }
 
